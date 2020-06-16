@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, Text, FlatList, Button } from 'react-native';
-import { getPostslistFromApi } from '../API/apiCalls'
-
-// Components/Search.js
+import { SafeAreaView, StyleSheet, FlatList, Button } from 'react-native';
+import { getPostslistFromApi } from '../API/apiCalls';
+import PostItem from '../Components/PostItem';
 
 
 export default class Home extends React.Component{
@@ -14,19 +13,22 @@ export default class Home extends React.Component{
 
     _loadPosts() {
         getPostslistFromApi().then(data => {
-            console.log(data[0].title.rendered)
-            this.setState({ posts: data[0]})
+            this.setState({ posts: data})
         })
     }
 
     render(){
         return (
             <SafeAreaView style={styles.main_container}>
-                <Button title='Rechercher' onPress={() => this._loadPosts()}/>
+                <Button title='Liste des articles' onPress={() => this._loadPosts()}/>
                 <FlatList
                     data={this.state.posts}
-                    keyExtractor={(item) => item.id}
-                    renderItem={({item}) => <Text>{ item.title.rendered }</Text>}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => (
+                        <PostItem
+                            post={item}
+                        />
+                    )}
                 />
             </SafeAreaView>
         )
