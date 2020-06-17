@@ -6,9 +6,12 @@ export default class Details extends React.Component{
 
 
     render(){
+        const {navigation, route} = this.props
+        const { idPost } = route.params;
+        console.log(this.props.navigation)
         return (
             <View style={styles.main_container}>
-                <Text>itemId: 28</Text>
+                <Text>idPost: {JSON.stringify(idPost)}</Text>
             </View>
         )
     }
@@ -20,4 +23,4 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center'
     }
-  })
+})

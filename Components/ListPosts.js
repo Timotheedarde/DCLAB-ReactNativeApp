@@ -4,7 +4,7 @@ import { getPostslistFromApi } from '../API/apiCalls';
 import PostItem from '../Components/PostItem';
 
 
-export default class Home extends React.Component{
+export default class ListPosts extends React.Component{
 
     constructor(props) {
         super(props)
@@ -17,6 +17,12 @@ export default class Home extends React.Component{
         })
     }
 
+    _displayDetailForFilm = (idPost) => {
+        const {navigation}=this.props
+        //console.log("Display film with id " + idPost)
+        navigation.push('PostDetails', {idPost:idPost})
+    }
+
     render(){
         return (
             <SafeAreaView style={styles.main_container}>
@@ -27,6 +33,7 @@ export default class Home extends React.Component{
                     renderItem={({ item }) => (
                         <PostItem
                             post={item}
+                            displayDetailForFilm={this._displayDetailForFilm}
                         />
                     )}
                 />
