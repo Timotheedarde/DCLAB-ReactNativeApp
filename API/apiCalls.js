@@ -5,6 +5,10 @@
 //         .catch((error) => console.error(error))
 // }
 
+
+
+// POST //
+
 export function getPostslistFromApi() {
     const url = 'http://192.168.1.12/WPDCLAB/wp-json/wp/v2/posts'
     return fetch(url)
@@ -12,8 +16,6 @@ export function getPostslistFromApi() {
         .catch((error) => console.error(error))
 }
 
-
-//TODO: Récuperer en parametre l' id du post et concatener avec adresse de l'api des posts/ idDuPost
 export function getPostFromApiWithIdItem(idPost) {
     const url = 'http://192.168.1.12/WPDCLAB/wp-json/wp/v2/posts/' + idPost 
     return fetch(url)
@@ -23,6 +25,40 @@ export function getPostFromApiWithIdItem(idPost) {
 
 export function getPostImageFromApiWithIdItem(idPost) {
     const url = 'http://192.168.1.12/WPDCLAB/wp-json/wp/v2/posts/' + idPost 
+    return fetch(url)
+    .then((response) => response.json())
+    .catch((error) => console.error(error))
+}
+
+// EVENT //
+
+export function getEventslistFromApi() {
+    const url = 'http://192.168.1.12/WPDCLAB/wp-json/wp/v2/posts'
+    return fetch(url)
+        .then((response) => response.json())
+        .catch((error) => console.error(error))
+}
+
+export function getEventFromApiWithIdItem(idEvent) {
+    const url = 'http://192.168.1.12/WPDCLAB/wp-json/wp/v2/posts/' + idEvent 
+    return fetch(url)
+    .then((response) => response.json())
+    .catch((error) => console.error(error))
+}
+
+
+
+// FORUM //
+
+export function getForumslistFromApi() {
+    const url = 'http://192.168.1.12/WPDCLAB/wp-json/wp/v2/posts'
+    return fetch(url)
+        .then((response) => response.json())
+        .catch((error) => console.error(error))
+}
+
+export function getForumFromApiWithIdItem(idForum) {
+    const url = 'http://192.168.1.12/WPDCLAB/wp-json/wp/v2/posts/' + idForum 
     return fetch(url)
     .then((response) => response.json())
     .catch((error) => console.error(error))

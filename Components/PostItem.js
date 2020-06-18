@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity  } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, Image  } from 'react-native'
 
 export default class PostItem extends React.Component {
 
@@ -12,10 +12,13 @@ export default class PostItem extends React.Component {
             <TouchableOpacity
                 style={styles.main_container}
                 onPress={() => { displayDetailForPost(post.id) }}>
+                <Image style={ styles.post_img } source={require('../Images/picsum.png')}/>
                 <View style={styles.content_container}>
                     <View style={styles.header_container}>
                         <Text style={styles.title_text}>{post.title.rendered}</Text>
-                        <Text style={styles.excerpt_text}>{post.excerpt.rendered}</Text>
+                    </View>
+                    <View style={styles.description_container}>
+                        <Text style={styles.description_text} numberOfLines={6}>{post.excerpt.rendered}</Text>
                     </View>
                 </View>
             </TouchableOpacity >
@@ -25,7 +28,39 @@ export default class PostItem extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
+        minWidth: 350,
         height: 190,
+        flexDirection: 'row',
+    },
+    post_img: {
+        width: 100,
+        height: 140,
+        margin: 5,
+        backgroundColor: 'gray'
+    },
+    content_container: {
+        flex:1,
+        margin:5,
+    },
+    header_container: {
+        flex: 3,
         flexDirection: 'row'
     },
+    title_text: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        flex: 1,
+        flexWrap: 'wrap',
+        paddingRight: 5
+    },
+    description_container: {
+        flex: 7
+    },
+    description_text: {
+        fontStyle: 'italic',
+        color: '#666666'
+    },
 })
+
+
+

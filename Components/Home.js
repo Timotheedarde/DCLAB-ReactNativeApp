@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
-import ListPosts from '../Components/ListPosts'
+import { StyleSheet, SafeAreaView, Button } from 'react-native';
+import ListView from '../Components/ListView'
+import { getPostslistFromApi } from '../API/apiCalls';
+
 
 export default class Home extends React.Component{
+
     render(){
         const {navigation}=this.props
         return (
-            <View style={styles.main_container}>
-                <ListPosts navigation={navigation}/>
-            </View>
+            <SafeAreaView style={styles.main_container}>
+                <ListView navigation={navigation}/>
+            </SafeAreaView>
         )
     }
 }

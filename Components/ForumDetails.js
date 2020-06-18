@@ -1,37 +1,33 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, ScrollView, Image, ActivityIndicator } from 'react-native';
-import { getPostFromApiWithIdItem } from '../API/apiCalls'
+import { getForumFromApiWithIdItem } from '../API/apiCalls'
 
   
 
-export default class PostDetails extends React.Component{
+export default class Details extends React.Component{
 
 
     constructor(props) {
         super(props)
-        this.state = { post: undefined, isLoading:true }
+        this.state = { forum: undefined, isLoading:true }
     }
     
 
 
     componentDidMount(){
         const { route } = this.props
-        const { idPost } = route.params;
-        getPostFromApiWithIdItem(idPost).then(data => {
-            this.setState({post: data, isLoading:false})
+        const { idForum } = route.params;
+        getForumFromApiWithIdItem(idForum).then(data => {
+            this.setState({forum: data, isLoading:false})
         })
     }
 
     _displayPostDetails(){
-        if (this.state.post != undefined) {
+        if (this.state.forum != undefined) {
             return (
                 <ScrollView style={styles.scrollview_container}>
-                    <Image
-                        style={styles.imagePostDetails}
-                        source={{uri: 'http://192.168.1.12/WPDCLAB/wp-content/uploads/2020/05/devweb1-300x189.png',}}
-                    />
-                    <Text>{this.state.post.title.rendered}</Text>
-                    <Text>{this.state.post.content.rendered}</Text>
+                    <Text>{this.state.forum.title.rendered}</Text>
+                    <Text>{this.state.forum.content.rendered}</Text>
                 </ScrollView>
             )
         }
@@ -74,8 +70,4 @@ const styles = StyleSheet.create({
     scrollview_container: {
       flex: 1
     },
-    imagePostDetails: {
-        width: 50,
-        height: 50,
-      }
 })

@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Button, Text, View } from 'react-native';
+import { StyleSheet, Button, Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../Components/Home';
 import PostDetails from '../Components/PostDetails';
+import EventDetails from '../Components/EventDetails';
+import ForumDetails from '../Components/ForumDetails';
 
 
 function DetailsScreen() {
@@ -24,12 +26,30 @@ function HomeScreen({ navigation }) {
   }
 
 function PostDetailsScreen({route,navigation}) {
-return (
-    <PostDetails
-        navigation = {navigation}
-        route = {route}
-    />
-)
+    return (
+        <PostDetails
+            navigation = {navigation}
+            route = {route}
+        />
+    )
+}
+
+function EventDetailsScreen({route,navigation}) {
+    return (
+        <EventDetails
+            navigation = {navigation}
+            route = {route}
+        />
+    )
+}
+
+function ForumDetailsScreen({route,navigation}) {
+    return (
+        <ForumDetails
+            navigation = {navigation}
+            route = {route}
+        />
+    )
 }
 
 function ProfilScreen({ navigation }) {
@@ -49,8 +69,19 @@ const HomeStack = createStackNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen 
+        name="Home"
+        component={HomeScreen} 
+        options={{
+          title: 'Accueil',
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          }
+        }}
+        />
       <HomeStack.Screen name="PostDetails" component={PostDetailsScreen} />
+      <HomeStack.Screen name="EventDetails" component={EventDetailsScreen} />
+      <HomeStack.Screen name="ForumDetails" component={ForumDetailsScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -69,12 +100,48 @@ function ProfilStackScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
+    const styles = StyleSheet.create({
+        tabBar_Icon: {
+            width:40,
+            height:40,
+        }
+      })
+
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeStackScreen} />
-        <Tab.Screen name="Profil" component={ProfilStackScreen} />
+        <Tab.Navigator
+            tabBarOptions={{
+                showLabel: false,
+                activeBackgroundColor: '#DDDDDD',
+                inactiveBackgroundColor: '#FFFFFF',
+        }}>
+        <Tab.Screen 
+            name="Home"
+            component={HomeStackScreen}
+            options={{
+                tabBarIcon: () => {
+                    return <Image style={ styles.tabBar_Icon }
+                        source={require('../Images/home.png')}
+                    />
+                }
+            }}
+        />
+        <Tab.Screen
+            name="Profil" 
+            component={ProfilStackScreen} 
+            options={{
+                tabBarIcon: () => {
+                    return <Image style={ styles.tabBar_Icon }
+                        source={require('../Images/user.png')}
+                    />
+                }
+            }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
+
+

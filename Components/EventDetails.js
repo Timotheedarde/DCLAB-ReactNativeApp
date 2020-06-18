@@ -4,34 +4,36 @@ import { getPostFromApiWithIdItem } from '../API/apiCalls'
 
   
 
-export default class PostDetails extends React.Component{
+export default class EventDetails extends React.Component{
 
 
     constructor(props) {
         super(props)
-        this.state = { post: undefined, isLoading:true }
+        this.state = { event: undefined, isLoading:true }
     }
     
 
 
     componentDidMount(){
         const { route } = this.props
-        const { idPost } = route.params;
-        getPostFromApiWithIdItem(idPost).then(data => {
-            this.setState({post: data, isLoading:false})
+        const { idEvent } = route.params;
+        getPostFromApiWithIdItem(idEvent).then(data => {
+            this.setState({event: data, isLoading:false})
         })
     }
 
     _displayPostDetails(){
-        if (this.state.post != undefined) {
+        if (this.state.event != undefined) {
             return (
                 <ScrollView style={styles.scrollview_container}>
                     <Image
-                        style={styles.imagePostDetails}
-                        source={{uri: 'http://192.168.1.12/WPDCLAB/wp-content/uploads/2020/05/devweb1-300x189.png',}}
+                        style={styles.imageEventDetails}
+                        source={{
+                        uri: 'http://192.168.1.12/WPDCLAB/wp-content/uploads/2020/05/devweb1-300x189.png',
+                        }}
                     />
-                    <Text>{this.state.post.title.rendered}</Text>
-                    <Text>{this.state.post.content.rendered}</Text>
+                    <Text>{this.state.event.title.rendered}</Text>
+                    <Text>{this.state.event.content.rendered}</Text>
                 </ScrollView>
             )
         }
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
     scrollview_container: {
       flex: 1
     },
-    imagePostDetails: {
+    imageEventDetails: {
         width: 50,
         height: 50,
       }
