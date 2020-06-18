@@ -7,11 +7,11 @@ export default class PostItem extends React.Component {
 
 
     render() {
-        const { post, displayDetailForFilm, navigation } = this.props
+        const { post, displayDetailForPost, navigation } = this.props
         return (
             <TouchableOpacity
                 style={styles.main_container}
-                onPress={() => { displayDetailForFilm(post.id) }}>
+                onPress={() => { displayDetailForPost(post.id) }}>
                 <View style={styles.content_container}>
                     <View style={styles.header_container}>
                         <Text style={styles.title_text}>{post.title.rendered}</Text>
