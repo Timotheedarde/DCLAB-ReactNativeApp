@@ -19,6 +19,12 @@ export function getPostFromApiWithIdItem(idPost) {
     return fetch(url)
     .then((response) => response.json())
     .catch((error) => console.error(error))
-
-    
 }
+
+export function getPostImageFromApiWithIdItem(idPost) {
+    const url = 'http://192.168.1.12/WPDCLAB/wp-json/wp/v2/posts/' + idPost 
+    return fetch(url)
+    .then((response) => response.json())
+    .catch((error) => console.error(error))
+}
+

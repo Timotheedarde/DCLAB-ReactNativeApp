@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ListPosts from '../Components/ListPosts'
 
 export default class Home extends React.Component{
@@ -7,7 +7,6 @@ export default class Home extends React.Component{
         const {navigation}=this.props
         return (
             <View style={styles.main_container}>
-                <Button title='test' onPress={()=>navigation.push('PostDetails')}/>
                 <ListPosts navigation={navigation}/>
             </View>
         )
