@@ -31,6 +31,8 @@ const styles = StyleSheet.create({
         minWidth: 350,
         height: 190,
         flexDirection: 'row',
+        backgroundColor: 'white',
+        margin:5,
     },
     post_img: {
         width: 100,
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
     title_text: {
         fontWeight: 'bold',
         fontSize: 20,
+        color:'#00263E',
         flex: 1,
         flexWrap: 'wrap',
         paddingRight: 5
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     },
     description_text: {
         fontStyle: 'italic',
-        color: '#666666'
+        color: '#00263E'
     },
 })
 

@@ -28,10 +28,12 @@ export default class PostDetails extends React.Component{
                 <ScrollView style={styles.scrollview_container}>
                     <Image
                         style={styles.imagePostDetails}
-                        source={{uri: 'http://192.168.1.12/WPDCLAB/wp-content/uploads/2020/05/devweb1-300x189.png',}}
+                        source={{uri: 'http://192.168.1.12/WPDCLAB/wp-content/uploads/2020/05/devweb1-300x189.png'}}
                     />
-                    <Text>{this.state.post.title.rendered}</Text>
-                    <Text>{this.state.post.content.rendered}</Text>
+                    <View style={styles.post_container} >
+                        <Text style={styles.title_text}>{this.state.post.title.rendered}</Text>
+                        <Text style={styles.content_text}>{this.state.post.content.rendered}</Text>
+                    </View>
                 </ScrollView>
             )
         }
@@ -41,7 +43,7 @@ export default class PostDetails extends React.Component{
         if (this.state.isLoading) {
             return (
                 <View style={styles.loading_container}>
-                    <ActivityIndicator size='large' />
+                    <ActivityIndicator size='large' color="#00263E" />
                 </View>
             )
         }
@@ -55,27 +57,53 @@ export default class PostDetails extends React.Component{
         </View>
        )
     }
-
 }
 
 const styles = StyleSheet.create({
     main_container: {
-      flex: 1
+        backgroundColor:'#00A3AD',
+        flex: 1
     },
     loading_container: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-      alignItems: 'center',
-      justifyContent: 'center'
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     scrollview_container: {
-      flex: 1
+        flex: 1,
+    },
+    post_container:{
+        backgroundColor:'#FFF',
+        margin:10,
+        padding:5,
     },
     imagePostDetails: {
-        width: 50,
-        height: 50,
-      }
+        height: 170,
+    },
+    title_text: {
+        fontWeight: 'bold',
+        fontSize: 35,
+        flex: 1,
+        flexWrap: 'wrap',
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10,
+        marginBottom: 10,
+        color: '#00263E',
+        textAlign: 'center'
+    },
+    content_text: {
+        fontStyle: 'italic',
+        color: '#00263E',
+        margin: 5,
+        marginBottom: 15
+    },
+
 })
+
+
+

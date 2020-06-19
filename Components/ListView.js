@@ -64,7 +64,7 @@ export default class ListPosts extends React.Component{
         if (this.state.isLoading) {
             return (
                 <View style={styles.loading_container}>
-                    <ActivityIndicator size='large' />
+                    <ActivityIndicator size='large' color="#00263E" />
                 </View>
             )
         }
@@ -74,7 +74,7 @@ export default class ListPosts extends React.Component{
         if (this.state.firstLoad) {
             return (
                 <View style={styles.logo_container}>
-                    <Image source={require('../Images/dclab_logo.png')} />
+                    <Image style={styles.logo} source={require('../Images/dclab_logo.png')} />
                 </View>
             )
         }
@@ -84,9 +84,9 @@ export default class ListPosts extends React.Component{
         return (
             <SafeAreaView style={styles.main_container}>
                 <View style={styles.buttons_container}>
-                    <View style={styles.buttons}><Button title='Actualités' onPress={() => this._loadPosts()}/></View>
-                    <View style={styles.buttons}><Button title='Évènements' onPress={() => this._loadEvents()}/></View>
-                    <View style={styles.buttons}><Button title='Forums' onPress={() => this._loadForums()}/></View>
+                    <View style={styles.buttons}><Button color="#00263E" title='Actualités' onPress={() => this._loadPosts()}/></View>
+                    <View style={styles.buttons}><Button color="#00263E" title='Évènements' onPress={() => this._loadEvents()}/></View>
+                    <View style={styles.buttons}><Button color="#00263E" title='Forums' onPress={() => this._loadForums()}/></View>
                 </View>
                 <View style={styles.list_container}>
                     {this._displayFirstLoad()}
@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
     main_container: {
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      backgroundColor:'#00A3AD'
     },
     buttons_container: {
         flex: 1,
@@ -169,5 +170,9 @@ const styles = StyleSheet.create({
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    logo: {
+        width:280,
+        height:200,
     },
 })

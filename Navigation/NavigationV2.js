@@ -75,11 +75,23 @@ function HomeStackScreen() {
         options={{
           title: 'Accueil',
           headerStyle: {
-            backgroundColor: '#f4511e',
-          }
+            backgroundColor: '#00263E',
+          },
+          headerTintColor: '#fff',
         }}
         />
-      <HomeStack.Screen name="PostDetails" component={PostDetailsScreen} />
+      <HomeStack.Screen
+       name="PostDetails" 
+       component={PostDetailsScreen}
+       options={{
+        title: '',
+        headerStyle: {
+          backgroundColor: '#00263E',
+        },
+        headerTintColor: '#fff',
+      }}
+
+      />
       <HomeStack.Screen name="EventDetails" component={EventDetailsScreen} />
       <HomeStack.Screen name="ForumDetails" component={ForumDetailsScreen} />
     </HomeStack.Navigator>

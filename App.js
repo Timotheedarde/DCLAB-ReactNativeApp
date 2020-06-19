@@ -6,9 +6,10 @@ import NavigationV2 from './Navigation/NavigationV2';
 
 function App() {
   return (
-    <NavigationV2/>
+      <NavigationV2 />
   );
 }
 
 
 export default App;
+
