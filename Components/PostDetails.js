@@ -11,8 +11,6 @@ export default class PostDetails extends React.Component{
         super(props)
         this.state = { post: undefined, isLoading:true }
     }
-    
-
 
     componentDidMount(){
         const { route } = this.props

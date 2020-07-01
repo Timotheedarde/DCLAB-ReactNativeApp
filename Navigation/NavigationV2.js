@@ -73,7 +73,7 @@ function HomeStackScreen() {
         name="Home"
         component={HomeScreen} 
         options={{
-          title: 'Accueil',
+          title: '',
           headerStyle: {
             backgroundColor: '#00263E',
           },

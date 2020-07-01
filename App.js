@@ -3,10 +3,9 @@
 import * as React from 'react';
 import NavigationV2 from './Navigation/NavigationV2';
 
-
 function App() {
   return (
-      <NavigationV2 />
+      <NavigationV2/>
   );
 }
 
